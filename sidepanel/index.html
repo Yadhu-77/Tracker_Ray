@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrackerRay Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo-area">
+        <div class="logo-icon-container">
+          <svg class="logo-icon" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h1>Tracker<span class="highlight">Ray</span></h1>
+          <span class="subtitle">MV3 Privacy Shield</span>
+        </div>
+      </div>
+      <button id="clear-btn" class="icon-btn" title="Reset traffic graph">
+        <svg class="btn-icon" viewBox="0 0 24 24">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Main Banner / Active Host -->
+    <section class="host-banner">
+      <div class="host-details">
+        <span class="label">Inspecting Tab Host</span>
+        <span id="active-host" class="value">No Active Tab</span>
+      </div>
+      <div id="connection-status" class="status-indicator online"></div>
+    </section>
+
+    <!-- Stats Grid -->
+    <section class="stats-grid">
+      <div class="stat-card" data-category="total">
+        <span class="stat-label">Total</span>
+        <span id="stat-total" class="stat-value">0</span>
+      </div>
+      <div class="stat-card" data-category="ads">
+        <span class="stat-label">Ads</span>
+        <span id="stat-ads" class="stat-value">0</span>
+      </div>
+      <div class="stat-card" data-category="analytics">
+        <span class="stat-label">Analytics</span>
+        <span id="stat-analytics" class="stat-value">0</span>
+      </div>
+      <div class="stat-card" data-category="social">
+        <span class="stat-label">Social</span>
+        <span id="stat-social" class="stat-value">0</span>
+      </div>
+    </section>
+
+    <!-- Graph Visualizer -->
+    <section class="visualization-area">
+      <div class="area-header">
+        <h2>Network Visualizer</h2>
+        <div class="graph-legend">
+          <span class="legend-item"><span class="dot first-party"></span>First Party</span>
+          <span class="legend-item"><span class="dot blocked"></span>Blocked</span>
+        </div>
+      </div>
+      <div id="graph-container">
+        <div id="graph-placeholder" class="placeholder-overlay">
+          <svg class="spinner" viewBox="0 0 50 50">
+            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+          </svg>
+          <p>Awaiting network requests...</p>
+        </div>
+        <div id="graph"></div>
+      </div>
+    </section>
+
+    <!-- Domain List Panel -->
+    <section class="domains-panel">
+      <div class="area-header">
+        <h2>Detected Domains</h2>
+        <span id="domains-count" class="count-badge">0 total</span>
+      </div>
+      <div id="domains-list" class="list-container">
+        <!-- Dyn list -->
+      </div>
+    </section>
+  </div>
+
+  <!-- Scripts -->
+  <script src="d3.min.js"></script>
+  <script src="tracker-map.js"></script>
+  <script src="sidepanel.js"></script>
+</body>
+</html>
